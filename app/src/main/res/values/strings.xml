@@ -1,0 +1,16 @@
+<resources>
+  <string name="app_name">Clone Reddit</string>
+  <string name="action_settings">Settings</string>
+  <string name="create_topic_placeholder">Write your Topic. \n(Max 255 characters)</string>
+  <string name="add_a_topic">Add a topic</string>
+
+  <!-- Fonts -->
+  <string name="bold">fonts/notosans-bold.ttf</string>
+  <string name="regular">fonts/notosans-regular.ttf</string>
+
+  <string name="font_bold">@string/bold</string>
+  <string name="font_regular">@string/regular</string>
+  <string name="post_topic">Post</string>
+  <string name="add_topic">Add topic</string>
+  <string name="empty_topics">No topics available yet!\n\n Start posting a topic</string>
+</resources>

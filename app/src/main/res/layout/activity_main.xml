@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+  <data>
+    <import type="android.view.View"/>
+    <variable
+        name="mainViewModel"
+        type="com.test.clonereddit.modules.newsfeed.viewmodel.MainViewModel"
+        />
+  </data>
+
+  <android.support.design.widget.CoordinatorLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".modules.newsfeed.view.MainActivity"
+      >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/llToolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:fitsSystemWindows="true"
+        >
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/tbMain"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+          android:windowActionBarOverlay="true"
+          app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+          >
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_gravity="center"
+            tools:text="toolbar"
+            android:textSize="@dimen/text_size_small_extra"
+            android:textColor="@color/text_color_white"
+            style="@style/TextAppearance.Title"
+            />
+      </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main"
+        android:visibility="@{mainViewModel.contentVisibility.get()}"
+        bind:mainViewModel="@{mainViewModel}"
+        />
+
+    <TextView
+        android:id="@+id/tvPostTopic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{mainViewModel.emptyStateVisibility.get()}"
+        android:textColor="@color/text_color_white"
+        android:text="@string/empty_topics"
+        android:layout_gravity="center"
+        android:gravity="center"
+        style="@style/TextAppearance.Title"
+        />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/spacing_sixteen"
+        app:srcCompat="@drawable/ic_livejournal"
+        />
+
+
+  </android.support.design.widget.CoordinatorLayout>
+</layout>

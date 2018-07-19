@@ -1,0 +1,18 @@
+<resources>
+  <dimen name="fab_margin">16dp</dimen>
+  <dimen name="spacing_eight">8dp</dimen>
+  <dimen name="spacing_sixteen">16dp</dimen>
+  <dimen name="spacing_large">24dp</dimen>
+  <dimen name="spacing_four">4dp</dimen>
+  <dimen name="spacing_max">36dp</dimen>
+  <dimen name="min_height">90dp</dimen>
+
+  <dimen name="text_size_micro">12sp</dimen>
+  <dimen name="text_size_thirteen">13sp</dimen>
+  <dimen name="text_size_small">14sp</dimen>
+  <dimen name="text_size_medium_micro">18sp</dimen>
+  <dimen name="text_size_small_extra">16sp</dimen>
+  <dimen name="text_size_eighteen">18sp</dimen>
+  <dimen name="text_size_medium">20sp</dimen>
+  <dimen name="spacing_minor">2dp</dimen>
+</resources>

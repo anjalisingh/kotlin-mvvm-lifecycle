@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+  <include layout="@layout/toolbar"/>
+
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/tilCreateTopic"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/spacing_sixteen"
+      android:theme="@style/TextAppearance.EditText">
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/etCreateTopic"
+        android:minHeight="@dimen/min_height"
+        android:minLines="3"
+        android:maxLength="255"
+        android:inputType="text|textMultiLine|textCapSentences"
+        android:textColorHint="@color/text_color_black"
+        android:hint="@string/create_topic_placeholder"
+        style="@style/edit_text_input"
+        />
+
+  </android.support.design.widget.TextInputLayout>
+
+  <TextView
+      android:id="@+id/tvPostTopic"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/colorPrimary"
+      android:layout_margin="@dimen/spacing_sixteen"
+      android:paddingTop="@dimen/spacing_four"
+      android:paddingBottom="@dimen/spacing_four"
+      android:paddingLeft="@dimen/spacing_sixteen"
+      android:paddingRight="@dimen/spacing_sixteen"
+      android:layout_gravity="end"
+      android:text="@string/post_topic"
+      android:enabled="false"
+      android:background="@drawable/button"
+      style="@style/TextAppearance.Title"
+      />
+</LinearLayout>
