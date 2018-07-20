@@ -13,6 +13,6 @@
   <dimen name="text_size_medium_micro">18sp</dimen>
   <dimen name="text_size_small_extra">16sp</dimen>
   <dimen name="text_size_eighteen">18sp</dimen>
-  <dimen name="text_size_medium">20sp</dimen>
+  <dimen name="text_size_medium">24sp</dimen>
   <dimen name="spacing_minor">2dp</dimen>
 </resources>

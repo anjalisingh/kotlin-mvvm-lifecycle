@@ -23,9 +23,9 @@
       parent="android:TextAppearance">
     <item name="android:textColorHint">@color/text_color_grey</item>
     <item name="android:textSize">20sp</item>
-    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorAccent">@color/colorLightGreen</item>
     <item name="colorControlNormal">@color/colorPrimaryDark</item>
-    <item name="colorControlActivated">@color/colorAccent</item>
+    <item name="colorControlActivated">@color/colorLightGreen</item>
   </style>
 
   <style name="edit_text_input">
@@ -33,7 +33,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:paddingTop">10dp</item>
     <item name="android:paddingBottom">10dp</item>
-    <item name="android:textColor">@color/text_color_black</item>
+    <item name="android:textColor">@color/text_color_white</item>
     <item name="android:textSize">@dimen/text_size_eighteen</item>
   </style>
 

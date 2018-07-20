@@ -28,6 +28,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minHeight="100dp"
         android:layout_margin="@dimen/spacing_sixteen"
         >
 
@@ -35,11 +36,32 @@
           android:id="@+id/tvTitle"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintLeft_toRightOf="@+id/ivUp"
           app:layout_constraintTop_toTopOf="parent"
+          android:layout_marginLeft="@dimen/spacing_sixteen"
+          android:layout_marginStart="@dimen/spacing_sixteen"
+          app:layout_constraintVertical_bias="0"
           android:text="@{topic.title}"
           android:textColor="@color/text_color_white"
           tools:text= "title"
+          style="@style/TextAppearance.Title"
+          />
+
+      <TextView
+          android:id="@+id/tvTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@{topic.formattedTime}"
+          app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintVertical_bias="1"
+          android:textSize="@dimen/text_size_small"
+          android:textColor="@color/text_color_white"
+          android:gravity="center_vertical"
+          tools:text= "added now"
+          android:layout_marginLeft="@dimen/spacing_sixteen"
+          android:layout_marginStart="@dimen/spacing_sixteen"
           style="@style/TextAppearance.Title"
           />
 
@@ -49,58 +71,41 @@
           android:layout_height="wrap_content"
           android:minHeight="30dp"
           android:minWidth="30dp"
+          android:padding="10dp"
           android:background="@drawable/ic_up_vector"
-          app:layout_constraintHorizontal_bias="1"
-          app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintLeft_toLeftOf="parent"
-          android:layout_marginTop="@dimen/spacing_max"
           />
 
       <TextView
           android:id="@+id/tvUpvoteCount"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          app:layout_constraintLeft_toRightOf="@+id/ivUp"
-          app:layout_constraintTop_toTopOf="@+id/ivUp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          android:layout_marginLeft="@dimen/spacing_sixteen"
-          android:layout_marginStart="@dimen/spacing_sixteen"
           android:text="@={`` + topic.voteCounts}"
-          tools:text="234"
-          android:textSize="@dimen/text_size_small_extra"
-          android:textColor="@color/text_color_white"
+          tools:text="4"
+          android:layout_marginTop="@dimen/spacing_four"
+          app:layout_constraintTop_toBottomOf="@+id/ivUp"
+          app:layout_constraintBottom_toTopOf="@+id/ivDown"
+          app:layout_constraintLeft_toLeftOf="@+id/ivUp"
+          app:layout_constraintRight_toRightOf="@+id/ivUp"
+          android:textSize="@dimen/text_size_medium"
+          android:textColor="@color/text_color_grey_2"
           android:gravity="center_vertical"
           style="@style/TextAppearance.Title"
+
           />
 
       <Button
           android:id="@+id/ivDown"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:padding="10dp"
           android:minHeight="30dp"
           android:minWidth="30dp"
           android:background="@drawable/ic_down_vector"
-          android:layout_marginLeft="@dimen/spacing_sixteen"
-          android:layout_marginStart="@dimen/spacing_sixteen"
-          app:layout_constraintLeft_toRightOf="@+id/tvUpvoteCount"
-          app:layout_constraintBottom_toBottomOf="parent"
-          />
-
-      <TextView
-          android:id="@+id/tvTime"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@{topic.formattedTime}"
-          app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintBottom_toBottomOf="parent"
-          android:textSize="@dimen/text_size_small"
-          android:textColor="@color/text_color_white"
-          android:gravity="center_vertical"
-          tools:text= "added now"
-          android:layout_marginRight="@dimen/spacing_sixteen"
-          android:layout_marginEnd="@dimen/spacing_sixteen"
-          style="@style/TextAppearance.Title"
+          android:layout_marginTop="@dimen/spacing_four"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tvUpvoteCount"
           />
     </android.support.constraint.ConstraintLayout>
   </android.support.v7.widget.CardView>
