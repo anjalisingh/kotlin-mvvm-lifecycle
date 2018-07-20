@@ -15,7 +15,6 @@ import com.test.clonereddit.modules.newsfeed.model.Topic
 
 class MainViewModel : ViewModel() {
 
-  private var topicList = ArrayList<Topic>()
   var emptyStateVisibility : ObservableInt = ObservableInt(View.VISIBLE)
   var contentVisibility : ObservableInt = ObservableInt(View.GONE)
   private val topicsLiveData = MutableLiveData<ArrayList<Topic>>()
@@ -55,13 +54,16 @@ class MainViewModel : ViewModel() {
    * add topic to top of list
    */
   fun addTopic(topic: Topic) {
-    topic.topicId = topicsLiveData.value?.size
-    topicList.add(0, topic)
-    if(topicList.isEmpty()) {
+    topic.topicId = if(topicsLiveData.value == null) 0 else topicsLiveData?.value?.size
+    val topicList = topicsLiveData?.value ?: ArrayList()
+    topicList?.add(0, topic)
+    if(topicList?.isEmpty()) {
       updateEmptyState()
     } else {
       updateContentState()
     }
+
+    topicsLiveData.value = ArrayList(topicList)
     sortList()
   }
 
@@ -69,7 +71,7 @@ class MainViewModel : ViewModel() {
    * sort list descending according to votes
    */
   private fun sortList() {
-    val sortedList = topicList.sortedWith(compareByDescending({ it.voteCounts})).take(20)
+    val sortedList = topicsLiveData?.value?.sortedWith(compareByDescending({ it.voteCounts}))?.take(20)
     topicsLiveData.value = ArrayList(sortedList)
   }
 
@@ -78,17 +80,17 @@ class MainViewModel : ViewModel() {
    */
   fun upvoteTopic(topicId: Int) {
     var topic : Topic ?= null
-    for(item in topicList) {
-      if(item.topicId == topicId) {
-        topic = item
+    val iter = topicsLiveData.value?.iterator() ?: return
+    while (iter.hasNext()) {
+      topic = iter.next()
+      if(topic.topicId == topicId) {
+        topic.voteCounts++
+        topic.isDownvoted = false
+        topic.isUpvoted = true
         break
       }
     }
-    if(topic == null) return
 
-    topic.voteCounts++
-    topic.isUpvoted = true
-    topic?.isDownvoted = false
     sortList()
   }
 
@@ -97,17 +99,16 @@ class MainViewModel : ViewModel() {
    */
   fun downvoteTopic(topicId: Int) {
     var topic : Topic ?= null
-    for(item in topicList) {
-      if(item.topicId == topicId) {
-        topic = item
+    val iter = topicsLiveData.value?.iterator() ?: return
+    while (iter.hasNext()) {
+      topic = iter.next()
+      if(topic.topicId == topicId) {
+        topic.voteCounts--
+        topic.isDownvoted = true
+        topic.isUpvoted = false
         break
       }
     }
-    if(topic == null) return
-
-    topic.voteCounts--
-    topic.isDownvoted = true
-    topic.isUpvoted = false
     sortList()
   }
 
