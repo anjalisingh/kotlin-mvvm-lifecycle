@@ -1,6 +1,6 @@
 # Clone Reddit
 
-Features include :
+Features include
 - Adding topics
 - Upvote topic multiple times
 - Downvote topic Multiple times
