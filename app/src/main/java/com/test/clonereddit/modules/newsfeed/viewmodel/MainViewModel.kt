@@ -18,6 +18,7 @@ class MainViewModel : ViewModel() {
   var emptyStateVisibility : ObservableInt = ObservableInt(View.VISIBLE)
   var contentVisibility : ObservableInt = ObservableInt(View.GONE)
   private val topicsLiveData = MutableLiveData<ArrayList<Topic>>()
+  private var manualTopicId : Int = 0
 
   /**
    * initialise default state
@@ -54,8 +55,8 @@ class MainViewModel : ViewModel() {
    * add topic to top of list
    */
   fun addTopic(topic: Topic) {
-    topic.topicId = if(topicsLiveData.value == null) 0 else topicsLiveData?.value?.size
     val topicList = topicsLiveData?.value ?: ArrayList()
+    topic.topicId = manualTopicId++
     topicList?.add(0, topic)
     if(topicList?.isEmpty()) {
       updateEmptyState()
@@ -72,6 +73,7 @@ class MainViewModel : ViewModel() {
    */
   private fun sortList() {
     val sortedList = topicsLiveData?.value?.sortedWith(compareByDescending({ it.voteCounts}))?.take(20)
+    topicsLiveData.value?.clear()
     topicsLiveData.value = ArrayList(sortedList)
   }
 
