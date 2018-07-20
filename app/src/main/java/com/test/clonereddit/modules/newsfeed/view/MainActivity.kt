@@ -83,19 +83,24 @@ class MainActivity : BaseActivity(), OnTopicUpdateListener {
       }
     })
   }
-  
+
+  /**
+   * update viewmodel to upvote topic
+   */
   override fun onTopicUpvoted(topicId: Int, position: Int) {
     mainViewModel?.upvoteTopic(topicId)
     adapter.notifyDataSetChanged()
   }
 
+  /**
+   * update viewmodel to downvote topic
+   */
   override fun onTopicDownvoted(topicId: Int, position: Int) {
     mainViewModel?.downvoteTopic(topicId)
     adapter.notifyDataSetChanged()
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
     if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_CREATE_TOPIC) {
       val sdf = SimpleDateFormat("hh:mm a  MMM dd")
       val currentTime = sdf.format(Calendar.getInstance().time)

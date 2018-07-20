@@ -3,6 +3,11 @@ package com.test.clonereddit
 import android.app.Application
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 
+/**
+ * Created by anjalisingh
+ * initalise font
+ */
+
 class CloneApplication : Application() {
 
   override fun onCreate() {

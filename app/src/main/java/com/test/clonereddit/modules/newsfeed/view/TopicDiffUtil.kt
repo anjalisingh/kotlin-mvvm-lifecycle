@@ -3,6 +3,11 @@ package com.test.clonereddit.modules.newsfeed.view
 import android.support.v7.util.DiffUtil
 import com.test.clonereddit.modules.newsfeed.model.Topic
 
+/**
+ * Created by anjalisingh
+ * Diff util to compare adapter items
+ */
+
 class TopicDiffUtil(private val oldList: ArrayList<Topic>,
     private val newList: ArrayList<Topic>) : DiffUtil.Callback() {
 

@@ -16,11 +16,18 @@ import com.test.clonereddit.R
 import com.test.clonereddit.databinding.TopicItemRowBinding
 import com.test.clonereddit.modules.newsfeed.model.Topic
 
-
+/**
+ * Created by anjalisingh
+ * Topic Adapter with single view type
+ * Uses databinbinding for adapter items
+ */
 
 class TopicAdapter(private val listener : OnTopicUpdateListener) : RecyclerView.Adapter<ViewHolder>() {
   private var items = ArrayList<Topic>()
 
+  /**
+   * set topics using DiffUtil for comparing
+   */
   fun setData(topics: ArrayList<Topic>) {
     val diffResult = DiffUtil.calculateDiff(
         TopicDiffUtil(this.items, topics))
@@ -59,6 +66,9 @@ class TopicAdapter(private val listener : OnTopicUpdateListener) : RecyclerView.
     return items[position]
   }
 
+  /**
+   * View Holder for topic
+   */
   inner class TopicViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(
       binding.root) {
     private val context: Context = binding.root.context
@@ -71,6 +81,9 @@ class TopicAdapter(private val listener : OnTopicUpdateListener) : RecyclerView.
       ivDownvote = view.findViewById(R.id.ivDown)
     }
 
+    /**
+     * Bind data to each holder
+     */
     fun bindData(topic: Topic?) {
       binding?.root?.tag = topic?.topicId
       binding.setVariable(BR.topic, topic)
@@ -84,12 +97,18 @@ class TopicAdapter(private val listener : OnTopicUpdateListener) : RecyclerView.
       }
     }
 
+    /**
+     * Bind handler for upvote and downvote
+     */
     fun bindClickListener(handler : OnVoteListener) {
       ivUpvote?.setOnClickListener(handler)
       ivDownvote?.setOnClickListener(handler)
     }
   }
 
+  /**
+   * Listener for upvote and downvote
+   */
   class OnVoteListener(private val holder : TopicViewHolder, private val listener : OnTopicUpdateListener) : OnClickListener {
     private var vh: TopicViewHolder = holder
     private var position: Int = 0

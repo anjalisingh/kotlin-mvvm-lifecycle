@@ -1,5 +1,10 @@
 package com.test.clonereddit.modules.newsfeed.model
 
+/**
+ * Created by anjalisingh
+ * Topic Model
+ */
+
 data class Topic(
     var title : String?,
     var formattedTime : String,
