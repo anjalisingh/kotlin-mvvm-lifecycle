@@ -12,7 +12,6 @@ class MainViewModel : ViewModel() {
   private var topicList = ArrayList<Topic>()
   var emptyStateVisibility : ObservableInt = ObservableInt(View.VISIBLE)
   var contentVisibility : ObservableInt = ObservableInt(View.GONE)
-
   private val topicsLiveData = MutableLiveData<ArrayList<Topic>>()
 
   init {
@@ -37,6 +36,11 @@ class MainViewModel : ViewModel() {
   fun addTopic(topic: Topic) {
     topic.topicId = topicList.size
     topicList.add(0, topic)
+    if(topicList.isEmpty()) {
+      updateEmptyState()
+    } else {
+      updateContentState()
+    }
     sortList()
   }
 

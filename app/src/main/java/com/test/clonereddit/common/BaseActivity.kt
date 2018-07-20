@@ -8,6 +8,11 @@ import android.view.MenuItem
 import com.test.clonereddit.R
 import kotlinx.android.synthetic.main.toolbar.tvToolbarTitle
 
+/**
+ * Created by anjalisingh
+ * Base abstract Activity
+ */
+
 abstract class BaseActivity : AppCompatActivity() {
 
   var toolbar: Toolbar? = null
@@ -52,10 +57,5 @@ abstract class BaseActivity : AppCompatActivity() {
       return true
     }
     return super.onOptionsItemSelected(item)
-  }
-
-  protected fun setToolbarText(text: String) {
-    setSupportActionBar(toolbar)
-    supportActionBar!!.setTitle(text) //Clearing default title
   }
 }

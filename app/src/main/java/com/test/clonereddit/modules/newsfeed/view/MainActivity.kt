@@ -20,6 +20,10 @@ import kotlinx.android.synthetic.main.content_main.rvTopicList
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
+/**
+ * Created by anjalisingh
+ * Main Activity containing topic recycler view
+ */
 
 class MainActivity : BaseActivity(), OnTopicUpdateListener {
 
@@ -48,6 +52,10 @@ class MainActivity : BaseActivity(), OnTopicUpdateListener {
     observeViewModel()
   }
 
+  /**
+   * initialise toolbar, recyclerview
+   * set action for topic creation floating button
+   */
   private fun initialiseViews() {
     setSupportActionBar(tbMain)
     if (supportActionBar != null) {
@@ -64,17 +72,18 @@ class MainActivity : BaseActivity(), OnTopicUpdateListener {
     })
   }
 
+  /**
+   * observe live data changes
+   * update adapter accordingly
+   */
   private fun observeViewModel() {
     mainViewModel?.getTopicsLiveData()?.observe(this, Observer<ArrayList<Topic>> { topics ->
-      if(topics == null || topics.isEmpty()) {
-        mainViewModel?.updateEmptyState()
-      } else {
-        mainViewModel?.updateContentState()
+      if(topics != null) {
         adapter.setData(topics)
       }
     })
   }
-
+  
   override fun onTopicUpvoted(topicId: Int, position: Int) {
     mainViewModel?.upvoteTopic(topicId)
     adapter.notifyDataSetChanged()
