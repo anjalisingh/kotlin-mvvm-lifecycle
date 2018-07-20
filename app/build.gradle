@@ -51,7 +51,7 @@ dependencies {
 
   // ViewModel and LiveData
   implementation "android.arch.lifecycle:extensions:${arch}"
-  annotationProcessor "android.arch.lifecycle:compiler:${arch}"
+  implementation "android.arch.lifecycle:compiler:${arch}"
   implementation "android.arch.lifecycle:runtime:${arch}"
 
   // rx
